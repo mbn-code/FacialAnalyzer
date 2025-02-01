@@ -1,11 +1,29 @@
-CMakeLists.txt.user
+# Ignore build directory and generated files
+/build/
+
+# CMake generated files
 CMakeCache.txt
-CMakeFiles
-CMakeScripts
-Testing
-Makefile
+CMakeFiles/
+CMakeScripts/
 cmake_install.cmake
 install_manifest.txt
 compile_commands.json
 CTestTestfile.cmake
+
+# User-specific files
+CMakeLists.txt.user
+
+# Intermediate and dependency directories
 _deps
+
+# Ignore object files, libraries, executables (if generated at repo root)
+*.o
+*.so
+*.a
+*.obj
+*.exe
+
+# Ignore log files and log directories
+*.log
+logs/
+
