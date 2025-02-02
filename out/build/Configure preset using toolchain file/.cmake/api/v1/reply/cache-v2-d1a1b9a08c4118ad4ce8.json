@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/mbn/Documents/Programmering/c++/faceRE/out/build/Configure preset using toolchain file"
+			"value" : "/Users/mbn/Documents/GitHub/FacialAnalyzer/out/build/Configure preset using toolchain file"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -495,7 +495,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/mbn/Documents/Programmering/c++/faceRE/out/build/Configure preset using toolchain file/CMakeFiles/pkgRedirects"
+			"value" : "/Users/mbn/Documents/GitHub/FacialAnalyzer/out/build/Configure preset using toolchain file/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -555,7 +555,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/mbn/Documents/Programmering/c++/faceRE"
+			"value" : "/Users/mbn/Documents/GitHub/FacialAnalyzer"
 		},
 		{
 			"name" : "CMAKE_INSTALL_NAME_TOOL",
@@ -583,7 +583,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "/Users/mbn/Documents/Programmering/c++/faceRE/out/install/Configure preset using toolchain file"
+			"value" : "/Users/mbn/Documents/GitHub/FacialAnalyzer/out/install/Configure preset using toolchain file"
 		},
 		{
 			"name" : "CMAKE_LINKER",
@@ -1243,7 +1243,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/mbn/Documents/Programmering/c++/faceRE/out/build/Configure preset using toolchain file"
+			"value" : "/Users/mbn/Documents/GitHub/FacialAnalyzer/out/build/Configure preset using toolchain file"
 		},
 		{
 			"name" : "faceRec_IS_TOP_LEVEL",
@@ -1267,7 +1267,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/mbn/Documents/Programmering/c++/faceRE"
+			"value" : "/Users/mbn/Documents/GitHub/FacialAnalyzer"
 		}
 	],
 	"kind" : "cache",

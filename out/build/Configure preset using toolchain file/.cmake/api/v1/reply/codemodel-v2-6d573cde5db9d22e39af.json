@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/Users/mbn/Documents/Programmering/c++/faceRE/out/build/Configure preset using toolchain file",
-		"source" : "/Users/mbn/Documents/Programmering/c++/faceRE"
+		"build" : "/Users/mbn/Documents/GitHub/FacialAnalyzer/out/build/Configure preset using toolchain file",
+		"source" : "/Users/mbn/Documents/GitHub/FacialAnalyzer"
 	},
 	"version" : 
 	{

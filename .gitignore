@@ -27,3 +27,15 @@ _deps
 *.log
 logs/
 
+# Ignore temporary and IDE files - not important
+*.tmp
+*.swp
+*.bak
+/.idea/
+/.vscode/
+
+# Ignore additional build & unnecessary files
+*.ninja_log         # Ignore ninja log files
+*.result.json       # Ignore result JSON files
+
+.DS_Store

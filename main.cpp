@@ -88,7 +88,7 @@ int main() {
         // Loop over detections.
         for (int i = 0; i < detections.size[2]; i++) {
             float confidence = detections.ptr<float>(0)[i * 7 + 2];
-            if (confidence > 0.4) {  // Confidence threshold.
+            if (confidence > 0.7) {  // Confidence threshold.
                 int x1 = static_cast<int>(detections.ptr<float>(0)[i * 7 + 3] * frame.cols);
                 int y1 = static_cast<int>(detections.ptr<float>(0)[i * 7 + 4] * frame.rows);
                 int x2 = static_cast<int>(detections.ptr<float>(0)[i * 7 + 5] * frame.cols);
@@ -372,12 +372,12 @@ int main() {
                     Scalar meanGray, stdDevGray;
                     meanStdDev(grayFaceForData, meanGray, stdDevGray);
                     double contrast = stdDevGray[0];
-                    // Define thresholds: require at least 30 keypoints for sufficient detail.
-                    const int minKeypointsThreshold = 30;
+                    // Lowered thresholds for better acceptance.
+                    const int minKeypointsThreshold = 15; // lowered from 30
                     bool sufficientData = (kpCount >= minKeypointsThreshold) &&
-                                            (brightness > 50) &&
-                                            (contrast > 20) &&
-                                            (faceRect.area() > 1000);
+                                           (brightness > 30) &&       // lowered from 50
+                                           (contrast > 15) &&         // lowered from 20
+                                           (faceRect.area() > 800);   // lowered from 1000
                     
                     if (sufficientData) {
                         // Recompute detailed symmetry analysis.
@@ -455,4 +455,17 @@ finish:
     cap.release();
     destroyAllWindows();
     return 0;
+}
+
+// Example thresholds (adjust these values as needed)
+const int MIN_KEYPOINTS = 50; // Reduced from a higher value
+const double MIN_BRIGHTNESS = 0.3; // Reduced from a higher value
+const double MIN_CONTRAST = 0.3; // Reduced from a higher value
+const double MIN_FACE_SIZE = 0.1; // Reduced from a higher value
+
+bool sufficientData(int kpCount, double brightness, double contrast, double faceArea) {
+    return kpCount >= MIN_KEYPOINTS &&
+           brightness >= MIN_BRIGHTNESS &&
+           contrast >= MIN_CONTRAST &&
+           faceArea >= MIN_FACE_SIZE;
 }

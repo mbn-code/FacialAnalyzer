@@ -1,0 +1,13 @@
+{
+  "id": 2,
+  "brightness": 109.394,
+  "brightnessScore": 89.3941,
+  "brightnessAnalysis": "Good lighting",
+  "keypoints": 17,
+  "keypointsScore": 67,
+  "keypointsAnalysis": "Insufficient feature detail",
+  "symmetryScore": 65.1401,
+  "symmetryAnalysis": "Asymmetrical",
+  "overallScore": 80.3835,
+  "overallAnalysis": "Excellent facial features"
+}
