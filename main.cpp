@@ -9,6 +9,7 @@
 #include <vector>
 #include <fstream>  // Added for JSON file saving
 #include <chrono>  // For waiting/delay if needed
+#include <future>  // Added for async processing
 
 using namespace cv;
 using namespace std;
@@ -31,7 +32,7 @@ struct Candidate {
 
 int main() {
     // Open the default camera.
-    VideoCapture cap(0);
+    VideoCapture cap(1);
     if (!cap.isOpened()) {
         cerr << "Error: Could not open the camera!" << endl;
         return -1;
@@ -83,7 +84,8 @@ int main() {
         // Prepare the frame for DNN-based face detection.
         Mat blob = dnn::blobFromImage(frame, 1.0, Size(300, 300), Scalar(104.0, 177.0, 123.0));
         net.setInput(blob);
-        Mat detections = net.forward();
+        auto detectionsFuture = std::async(std::launch::async, [&](){ return net.forward(); });
+        Mat detections = detectionsFuture.get();
 
         // Loop over detections.
         for (int i = 0; i < detections.size[2]; i++) {
@@ -209,7 +211,10 @@ int main() {
                     savedHistograms.push_back(hist);
                     savedORBDescriptors.push_back(descriptors);
                     personCounter++;
-                    string filename = "pictures/person_" + to_string(personCounter) + ".jpg";
+                    // Updated filename includes ID, brightness and keypoints.
+                    string filename = "pictures/person_" + to_string(personCounter) +
+                                      "_bright" + to_string((int)mean(faceImg)[0]) +
+                                      "_kp" + to_string((int)keypoints.size()) + ".jpg";
                     thread([faceImg, filename]() { imwrite(filename, faceImg); }).detach();
                     double brightness = mean(faceImg)[0];
                     string stats = "ID:" + to_string(personCounter) +
@@ -418,7 +423,11 @@ int main() {
                             outFile << json.str();
                             outFile.close();
                         }
-                        string filename = "pictures/person_" + to_string(personCounter) + ".jpg";
+                        // Updated filename includes candidate.bestScore, brightness and keypoints count.
+                        string filename = "pictures/person_" + to_string(personCounter) +
+                                          "_score" + to_string((int)candidate.bestScore) +
+                                          "_bright" + to_string((int)brightness) +
+                                          "_kp" + to_string(kpCount) + ".jpg";
                         imwrite(filename, faceImg);
                         putText(frame, "Final Score Reached!", Point(10, frame.rows - 30),
                                 FONT_HERSHEY_SIMPLEX, 1.0, Scalar(0, 255, 0), 2);
