@@ -38,4 +38,7 @@ logs/
 *.ninja_log         # Ignore ninja log files
 *.result.json       # Ignore result JSON files
 
+pictures/*
+result_*
+
 .DS_Store
